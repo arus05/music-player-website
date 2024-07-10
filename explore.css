@@ -33,8 +33,9 @@
     flex-direction: column;
     justify-content: space-between;
     font-size: 14px;
-    box-shadow: white 0px 0px 8px;
+    box-shadow: var(--clr-aqua) 0px 0px 8px;
 }
+
 .song-card-image {
     border: 2px solid white;
     width: 100%;

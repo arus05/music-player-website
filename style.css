@@ -11,7 +11,8 @@
 :root {
     --clr-aqua: #00e4cb;
     --clr-aqua-light: #e3fffc;
-    --clr-black: #131017;
+    --clr-black: #15121a;
+    /* --clr-black: #131017; */
     --clr-white: white;
     --clr-grey: #302d33;
     --clr-grey-light: #e5e7eb;
@@ -434,8 +435,8 @@ form {
     border-radius: 50%;
 }
 
-.song-artist {
-    font-weight: bold;
+.song-author {
+    color: var(--clr-grey-footer);
 }
 
 .song-like-btn {
@@ -474,6 +475,7 @@ form {
 .song-player-artist {
     font-size: var(--fs-lg);
     margin-bottom: 2em;
+    color: var(--clr-grey-footer);
 }
 
 .song-player-image-container {

@@ -9,6 +9,8 @@
     if (!$conn) {
         echo "Connection error: " . mysqli_connect_error();
     }
+    
+    $error = "";
 
     if (isset($_POST["submit"])) {
         // Retrieve and sanitize user input
@@ -41,7 +43,7 @@
             header("Location: index.php");
             exit();
         } else {
-            echo "Query error: " . mysqli_error($conn);
+            $error = "Query error: " . mysqli_error($conn);
         }
 
         // Close the statement and connection

@@ -119,7 +119,12 @@ const seekBarInterval = setInterval(() => {
 
 /* NAV BAR COLORING LOGIC */
 const currentURL = window.location.href
-const currentPageName = currentURL.slice(currentURL.lastIndexOf("/")+1, currentURL.indexOf(".php"))
+let currentPageName
+if (currentURL[currentURL.length-1] == "/") {
+    currentPageName = "index"
+} else {
+    currentPageName = currentURL.slice(currentURL.lastIndexOf("/")+1, currentURL.indexOf(".php"))
+}
 const currentNavItemId = `menu-item-${currentPageName}-link`
 const currentNavItem = document.getElementById(currentNavItemId)
 currentNavItem.style.color = "#00e4cb"
@@ -159,6 +164,7 @@ async function loadSongs() {
     }
 }
 
+/* SONG FUNCTIONS */
 function togglePlayIcon(songId) {
     const iconEl = document.querySelector(`#song-item-${songId} .song-play-btn i`)
     iconEl.classList.toggle("bx-pause-circle")

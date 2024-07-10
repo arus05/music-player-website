@@ -172,7 +172,8 @@ async function loadSongs() {
     }
 }
 
-function togglePlayIcon(iconEl) {
+function togglePlayIcon(songId) {
+    const iconEl = document.querySelector(`#song-item-${songId} .song-play-btn i`)
     iconEl.classList.toggle("bx-pause-circle")
     iconEl.classList.toggle("bx-play-circle")
 }
@@ -228,7 +229,6 @@ function createSong(song) {
     songPlayBtn.append(playBtnIcon)
     songPlayBtn.addEventListener("click", (e) => {
         handlePlayPause(song.id)
-        togglePlayIcon(playBtnIcon)
     })
 
     songElement.append(
@@ -267,6 +267,7 @@ function handlePlayPause(songId) {
     songSeekBarEl.disabled = false
     if (currentSongId == songId) {
         toggleSongPlayerButton()
+        togglePlayIcon(songId)
         if (audioEl.paused) {
             audioEl.play()
             playAnimation()
@@ -276,11 +277,17 @@ function handlePlayPause(songId) {
             pauseAnimation()
         }
     }
+    else if (currentSongId == -1) {
+        setSong(songId)
+        toggleSongPlayerButton()
+        togglePlayIcon(songId)
+        audioEl.play()
+        playAnimation()
+    }
     else {
-        if (currentSongId != -1) {
-            const prevSongIcon = document.querySelector(`#song-item-${currentSongId} .song-play-btn i`)
-            setPlayIcon(prevSongIcon)
-        }
+        const prevSongIcon = document.querySelector(`#song-item-${currentSongId} .song-play-btn i`)
+        setPlayIcon(prevSongIcon)
+        togglePlayIcon(songId)
         pauseSongPlayerButton()
         playAnimation()
         setSong(songId)

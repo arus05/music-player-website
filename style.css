@@ -383,6 +383,7 @@ form {
     margin: 0.5em;
     background: var(--clr-black);
     width: 100%;
+    color: white;
 }
 
 .main-content {
